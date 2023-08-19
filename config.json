@@ -1,0 +1,9 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Port=5432;Database=postgres;Username=root;Password=root;"
+  },
+  "Discriminators": {
+    "Basic": "06398D2C-5B15-4D14-A44A-E1CDBC2B4D02",
+    "Incoming": "D12DFDE5-3397-471A-A07C-628DCAFB65A9"
+  }
+}
