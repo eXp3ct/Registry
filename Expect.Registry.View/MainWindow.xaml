@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Expect.Registry.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1560" MinWidth="300" FontSize="14" FontFamily="Times New Roman">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
 
+        <Menu Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Файл">
+                
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="Auto">
+            <ToolBar>
+                <Label>
+                    Фильтры
+                </Label>
+                <Separator/>
+                <TextBox MinWidth="120" Name="FilterByNameTextBox">
+                    Имя документа
+                </TextBox>
+            </ToolBar>
+        </ToolBarTray>
+
+        <GroupBox Grid.Row="2" Grid.Column="0">
+            <GroupBox.Header>
+                Выбор реестра
+            </GroupBox.Header>
+            <StackPanel>
+                <Button Name="BasicDocumentButton" VerticalAlignment="Top" MinHeight="70" Click="BasicDocumentButton_Click" Margin="5">
+                    Базовый документ
+                </Button>
+                <Button Name="IncomingDocumentButton" VerticalAlignment="Top" MinHeight="70" Click="IncomingDocumentButton_Click" Margin="5">
+                    Входящий документ
+                </Button>
+                <Button Name="CreateDocument" VerticalAlignment="Top" MinHeight="70" Click="CreateDocument_Click" Margin="5">
+                    Создать документ
+                </Button>
+            </StackPanel>
+        </GroupBox>
+        <DataGrid Grid.Row="2" Grid.Column="2" x:Name="DataGrid" SelectionMode="Single"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False" CanUserDeleteRows="False"
+                  CanUserReorderColumns="False" CanUserSortColumns="False" GridLinesVisibility="All" HorizontalContentAlignment="Left" HeadersVisibility="Column"
+                  >
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+            </DataGrid.CellStyle>
+
+        </DataGrid>
+        
     </Grid>
 </Window>
