@@ -24,7 +24,7 @@ namespace Expect.Registry.Infrastructure.Commands.LoadRegestry
 		}
 	}
 
-	public class LoadRegistryQueryHandler : IRequestHandler<LoadRegistryQuery, IEnumerable<IViewModel>>
+	public class LoadRegistryQueryHandler : ILoadRegistryHandler<LoadRegistryQuery> 
 	{
 		private readonly IApplicationDbContext _context;
 		private readonly IMapper _mapper;
@@ -40,12 +40,12 @@ namespace Expect.Registry.Infrastructure.Commands.LoadRegestry
 			return request.RegistryType switch
 			{
 				RegistryType.Basic => await _context.BasicDocuments
-										.Where(doc => doc.Discriminator == Guid.Parse(request.Configuration["Discriminators:Basic"]))
+										.Where(doc => doc.Discriminator == Guid.Parse(request.Configuration["Discriminators:Basic"]!))
 										.OfType<BasicDocument>()
 										.ProjectTo<BasicDocumentViewModel>(_mapper.ConfigurationProvider)
 										.ToListAsync(cancellationToken),
 				RegistryType.Incoming => await _context.BasicDocuments
-										.Where(doc => doc.Discriminator == Guid.Parse(request.Configuration["Discriminators:Incoming"]))
+										.Where(doc => doc.Discriminator == Guid.Parse(request.Configuration["Discriminators:Incoming"]!))
 										.OfType<IncomingDocument>()
 										.ProjectTo<IncomingDocumentViewModel>(_mapper.ConfigurationProvider)
 										.ToListAsync(cancellationToken),

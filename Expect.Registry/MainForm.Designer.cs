@@ -31,12 +31,14 @@
 			components = new System.ComponentModel.Container();
 			menuStrip1 = new MenuStrip();
 			файлToolStripMenuItem = new ToolStripMenuItem();
+			filterByNameTextBox = new ToolStripTextBox();
 			tableLayoutPanel = new TableLayoutPanel();
 			groupBox1 = new GroupBox();
 			incomingDocumentRegestryButton = new Button();
 			basicDocumentRegestryButton = new Button();
 			dataGridView1 = new DataGridView();
 			bindingSource = new BindingSource(components);
+			CreateDocumentButton = new Button();
 			menuStrip1.SuspendLayout();
 			tableLayoutPanel.SuspendLayout();
 			groupBox1.SuspendLayout();
@@ -46,18 +48,24 @@
 			// 
 			// menuStrip1
 			// 
-			menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem });
+			menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, filterByNameTextBox });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(1264, 24);
+			menuStrip1.Size = new Size(1264, 27);
 			menuStrip1.TabIndex = 0;
 			menuStrip1.Text = "menuStrip1";
 			// 
 			// файлToolStripMenuItem
 			// 
 			файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-			файлToolStripMenuItem.Size = new Size(48, 20);
+			файлToolStripMenuItem.Size = new Size(48, 23);
 			файлToolStripMenuItem.Text = "Файл";
+			// 
+			// filterByNameTextBox
+			// 
+			filterByNameTextBox.Name = "filterByNameTextBox";
+			filterByNameTextBox.Size = new Size(100, 23);
+			filterByNameTextBox.KeyPress += FilterDocumentsByName;
 			// 
 			// tableLayoutPanel
 			// 
@@ -67,21 +75,22 @@
 			tableLayoutPanel.Controls.Add(groupBox1, 0, 0);
 			tableLayoutPanel.Controls.Add(dataGridView1, 1, 0);
 			tableLayoutPanel.Dock = DockStyle.Fill;
-			tableLayoutPanel.Location = new Point(0, 24);
+			tableLayoutPanel.Location = new Point(0, 27);
 			tableLayoutPanel.Name = "tableLayoutPanel";
 			tableLayoutPanel.RowCount = 1;
 			tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 52.58216F));
-			tableLayoutPanel.Size = new Size(1264, 537);
+			tableLayoutPanel.Size = new Size(1264, 534);
 			tableLayoutPanel.TabIndex = 1;
 			// 
 			// groupBox1
 			// 
+			groupBox1.Controls.Add(CreateDocumentButton);
 			groupBox1.Controls.Add(incomingDocumentRegestryButton);
 			groupBox1.Controls.Add(basicDocumentRegestryButton);
 			groupBox1.Dock = DockStyle.Fill;
 			groupBox1.Location = new Point(3, 3);
 			groupBox1.Name = "groupBox1";
-			groupBox1.Size = new Size(232, 531);
+			groupBox1.Size = new Size(232, 528);
 			groupBox1.TabIndex = 0;
 			groupBox1.TabStop = false;
 			groupBox1.Text = "Выбор реестра";
@@ -118,8 +127,20 @@
 			dataGridView1.Location = new Point(241, 3);
 			dataGridView1.Name = "dataGridView1";
 			dataGridView1.ReadOnly = true;
-			dataGridView1.Size = new Size(1020, 531);
+			dataGridView1.Size = new Size(1020, 528);
 			dataGridView1.TabIndex = 1;
+			// 
+			// CreateDocumentButton
+			// 
+			CreateDocumentButton.AutoSize = true;
+			CreateDocumentButton.Dock = DockStyle.Top;
+			CreateDocumentButton.Location = new Point(3, 159);
+			CreateDocumentButton.Name = "CreateDocumentButton";
+			CreateDocumentButton.Size = new Size(226, 70);
+			CreateDocumentButton.TabIndex = 2;
+			CreateDocumentButton.Text = "Создать документ";
+			CreateDocumentButton.UseVisualStyleBackColor = true;
+			CreateDocumentButton.Click += StartCreatingDocument;
 			// 
 			// MainForm
 			// 
@@ -135,6 +156,7 @@
 			menuStrip1.PerformLayout();
 			tableLayoutPanel.ResumeLayout(false);
 			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
 			((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
 			ResumeLayout(false);
@@ -151,5 +173,7 @@
 		private Button basicDocumentRegestryButton;
 		private DataGridView dataGridView1;
 		private BindingSource bindingSource;
+		private ToolStripTextBox filterByNameTextBox;
+		private Button CreateDocumentButton;
 	}
 }

@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Expect.Registry.Domain\Expect.Registry.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
 </Project>

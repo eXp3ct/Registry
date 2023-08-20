@@ -41,12 +41,6 @@ namespace Expect.Registry.Data
 
 		#endregion Constructors
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			var connectionString = "Host=localhost;Port=5432;Database=postgres;Username=root;Password=root;";
-
-			optionsBuilder.UseNpgsql(connectionString);
-		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

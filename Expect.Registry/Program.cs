@@ -3,6 +3,8 @@ using Expect.Registry.Infrastructure;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
+using System.Windows;
 
 namespace Expect.Registry
 {
@@ -14,8 +16,6 @@ namespace Expect.Registry
 		[STAThread]
 		private static void Main()
 		{
-			ApplicationConfiguration.Initialize();
-
 			var services = new ServiceCollection();
 
 			var configurationBuilder = new ConfigurationBuilder()
@@ -30,7 +30,6 @@ namespace Expect.Registry
 
 			var mediator = serviceProvider.GetRequiredService<IMediator>();
 			using var form = new MainForm(mediator, configuration);
-
 			Application.Run(form);
 		}
 
