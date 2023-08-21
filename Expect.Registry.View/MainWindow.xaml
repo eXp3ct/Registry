@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Expect.Registry.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1560" MinWidth="300" FontSize="14" FontFamily="Times New Roman">
+        Title="MainWindow" Height="800" 
+        Width="1560" MinWidth="300" FontSize="14" 
+        FontFamily="Times New Roman"
+        Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -59,7 +62,7 @@
                     <Setter Property="FontSize" Value="16"/>
                 </Style>
             </DataGrid.CellStyle>
-
+            
         </DataGrid>
         
     </Grid>

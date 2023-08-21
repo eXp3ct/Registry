@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Expect.Registry.View
 {
-    public class App : Application
+    public partial class App : Application
     {
         private readonly MainWindow _mainWindow;
 

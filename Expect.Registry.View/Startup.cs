@@ -1,5 +1,6 @@
 ﻿using Expect.Registry.Data;
 using Expect.Registry.Infrastructure;
+using Expect.Registry.View.Windows.CreateDocument;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
