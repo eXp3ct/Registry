@@ -1,5 +1,4 @@
 ﻿using Expect.Registry.Domain.ViewModels.Interfaces;
-using Expect.Registry.Infrastructure.Enums;
 using MediatR;
 
 namespace Expect.Registry.Infrastructure.Commands.Interfaces

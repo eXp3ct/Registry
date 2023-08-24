@@ -2,18 +2,13 @@
 using AutoMapper.QueryableExtensions;
 using Expect.Registry.Data.Interfaces;
 using Expect.Registry.Domain.Interfaces;
-using Expect.Registry.Domain.Models;
-using Expect.Registry.Domain.ViewModels;
 using Expect.Registry.Domain.ViewModels.Interfaces;
 using Expect.Registry.Infrastructure.Commands.Interfaces;
-using Expect.Registry.Infrastructure.Enums;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Expect.Registry.Infrastructure.Commands.LoadRegestry
 {
-	public class LoadRegistryQuery< TViewModel> : ILoadRegistry<TViewModel>
+	public class LoadRegistryQuery<TViewModel> : ILoadRegistry<TViewModel>
 		where TViewModel : IViewModel
 	{
 	}

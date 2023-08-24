@@ -1,13 +1,6 @@
 ﻿using Expect.Registry.Domain.ViewModels.Interfaces;
-using Expect.Registry.Infrastructure.Enums;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Expect.Registry.Infrastructure.Commands.FilterDocuments
 {

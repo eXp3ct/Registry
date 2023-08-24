@@ -1,9 +1,5 @@
-﻿using Expect.Registry.Infrastructure.Commands.LoadRegestry;
-using Expect.Registry.Infrastructure.Enums;
-using Expect.Registry.View.Pages;
-using MediatR;
+﻿using Expect.Registry.View.Pages;
 using System;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Expect.Registry.View
@@ -14,6 +10,7 @@ namespace Expect.Registry.View
 	public partial class MainWindow : Window
 	{
 		private readonly DataPage _dataPage;
+
 		public MainWindow(DataPage dataPage)
 		{
 			InitializeComponent();
@@ -27,7 +24,7 @@ namespace Expect.Registry.View
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			Main.Content = _dataPage;	
+			Main.Content = _dataPage;
 		}
 	}
 }

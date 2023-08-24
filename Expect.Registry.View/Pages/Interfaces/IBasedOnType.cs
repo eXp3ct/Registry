@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Expect.Registry.View.Pages.Interfaces
+﻿namespace Expect.Registry.View.Pages.Interfaces
 {
 	public interface IBasedOnType
 	{
-		public void AddFields(Type docType);
+		public void AddFields(object document);
 	}
 }

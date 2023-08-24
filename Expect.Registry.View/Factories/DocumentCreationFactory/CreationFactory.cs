@@ -1,14 +1,10 @@
 ﻿using Expect.Registry.View.Pages.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace Expect.Registry.View.Factories.DocumentCreationFactory
 {
-	public class CreationFactory<TPage> : ICreationFactory<TPage> where TPage : Page, IBasedOnType
+	public class CreationFactory<TPage> : IPageFactory<TPage> where TPage : Page, IBasedOnType
 	{
 		private readonly Func<TPage> _factory;
 
@@ -17,11 +13,11 @@ namespace Expect.Registry.View.Factories.DocumentCreationFactory
 			_factory = factory;
 		}
 
-		public TPage Create(Type documentType)
+		public TPage Create(object document)
 		{
 			var page = _factory();
 
-			page.AddFields(documentType);
+			page.AddFields(document);
 
 			return page;
 		}

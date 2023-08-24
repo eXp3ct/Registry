@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Expect.Registry.View
 {
-    public partial class App : Application
-    {
-        private readonly MainWindow _mainWindow;
+	public partial class App : Application
+	{
+		private readonly MainWindow _mainWindow;
 
 		public App(MainWindow mainWindow)
 		{

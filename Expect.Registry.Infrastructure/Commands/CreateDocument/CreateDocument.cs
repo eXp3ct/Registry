@@ -5,11 +5,6 @@ using Expect.Registry.Domain.Models;
 using Expect.Registry.Domain.ViewModels;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Expect.Registry.Infrastructure.Commands.CreateDocument
 {
@@ -39,9 +34,7 @@ namespace Expect.Registry.Infrastructure.Commands.CreateDocument
 			var kinds = await _context.DocumentKinds
 				.ToListAsync(cancellationToken);
 
-			
-
-			if(request.DocumentVm.GetType() == typeof(BasicDocumentViewModel))
+			if (request.DocumentVm.GetType() == typeof(BasicDocumentViewModel))
 			{
 				var document = _mapper.Map<BasicDocument>(request.DocumentVm);
 				var kind = kinds.Find(x => x.Name == "Basic");
@@ -54,7 +47,7 @@ namespace Expect.Registry.Infrastructure.Commands.CreateDocument
 				await _context.DocumentKindBasicDocuments.AddAsync(join, cancellationToken);
 				await _context.BasicDocuments.AddAsync(document, cancellationToken);
 			}
-			else if(request.DocumentVm.GetType() == typeof(IncomingDocumentViewModel))
+			else if (request.DocumentVm.GetType() == typeof(IncomingDocumentViewModel))
 			{
 				var incoming = ((IncomingDocumentViewModel)request.DocumentVm);
 				var document = _mapper.Map<IncomingDocument>(incoming);
@@ -73,9 +66,9 @@ namespace Expect.Registry.Infrastructure.Commands.CreateDocument
 				var joinCounterParty = new List<CounterPartyIncomingDocument>();
 				var joinDeliveryMethod = new List<DeliveryMethodIncomingDocument>();
 				incoming.Addresse.Trim().Split(',').ToList().ForEach(x => addresse.Add(new Addressee { FullName = x }));
-				incoming.CameFrom.Trim().Split(',').ToList().ForEach(x => cameFroms.Add(new CameFrom{ Name = x }));
-				incoming.CounterParty.Trim().Split(',').ToList().ForEach(x => counterParties.Add(new CounterParty{ Name = x }));
-				incoming.DeliveryMethod.Trim().Split(',').ToList().ForEach(x => deliveryMethods.Add(new DeliveryMethod{ Name = x }));
+				incoming.CameFrom.Trim().Split(',').ToList().ForEach(x => cameFroms.Add(new CameFrom { Name = x }));
+				incoming.CounterParty.Trim().Split(',').ToList().ForEach(x => counterParties.Add(new CounterParty { Name = x }));
+				incoming.DeliveryMethod.Trim().Split(',').ToList().ForEach(x => deliveryMethods.Add(new DeliveryMethod { Name = x }));
 
 				addresse.ForEach(x => joinAddresse.Add(new AddresseIncomingDocument
 				{
@@ -104,7 +97,7 @@ namespace Expect.Registry.Infrastructure.Commands.CreateDocument
 				await _context.CameFroms.AddRangeAsync(cameFroms, cancellationToken);
 
 				await _context.AddresseIncomingDocuments.AddRangeAsync(joinAddresse, cancellationToken);
-				await _context.CameFromIncomingDocuments.AddRangeAsync(joinCameFrom, cancellationToken);	
+				await _context.CameFromIncomingDocuments.AddRangeAsync(joinCameFrom, cancellationToken);
 				await _context.CounterPartyIncomingDocuments.AddRangeAsync(joinCounterParty, cancellationToken);
 				await _context.DeliveryMethodIncomingDocuments.AddRangeAsync(joinDeliveryMethod, cancellationToken);
 

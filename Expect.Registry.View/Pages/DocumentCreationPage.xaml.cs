@@ -1,25 +1,13 @@
-﻿using AutoMapper.Internal;
-using Expect.Registry.Data.Interfaces;
-using Expect.Registry.Domain.Models;
-using Expect.Registry.Domain.ViewModels;
+﻿using Expect.Registry.Domain.ViewModels;
 using Expect.Registry.Infrastructure.Commands.CreateDocument;
 using Expect.Registry.View.Pages.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Expect.Registry.View.Pages
 {
@@ -32,22 +20,22 @@ namespace Expect.Registry.View.Pages
 		private readonly IMediator _mediator;
 
 		private Type? _docType = null;
+
 		public DocumentCreationPage(IMediator mediator)
 		{
 			InitializeComponent();
 			_mediator = mediator;
 		}
 
-
 		private void GoBackButtonClick(object sender, RoutedEventArgs e)
 		{
 			NavigationService.GoBack();
-        }
+		}
 
-		public void AddFields(Type docType)
+		public void AddFields(object document)
 		{
-			_docType = docType;
-			foreach (var property in docType.GetProperties())
+			_docType = document.GetType();
+			foreach (var property in document.GetType().GetProperties())
 			{
 				if (property.Name == "Id" || property.Name == "Discriminator" || property.Name == "DocumentKind" || property.Name == "CreatedDate")
 					continue;
@@ -57,7 +45,6 @@ namespace Expect.Registry.View.Pages
 					Text = property.Name,
 					Height = 35f,
 					VerticalAlignment = VerticalAlignment.Center
-
 				});
 				var textBox = new TextBox()
 				{
@@ -77,7 +64,7 @@ namespace Expect.Registry.View.Pages
 
 			var document = Activator.CreateInstance(_docType);
 
-			foreach(var (prop, value) in _documentValues)
+			foreach (var (prop, value) in _documentValues)
 			{
 				document!.GetType()!.GetProperty(prop.Name)!.SetValue(document, value.Text, null);
 			}

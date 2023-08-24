@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Expect.Registry.Domain.JoinEntities;
 using Expect.Registry.Domain.Models;
 using Expect.Registry.Domain.ViewModels;
 

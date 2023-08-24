@@ -5,24 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Expect.Registry.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" 
-        Width="1560" MinWidth="300" FontSize="14" 
+        Title="MainWindow" Height="800"
+        Width="1560" MinWidth="300" FontSize="14"
         FontFamily="Times New Roman"
         Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="9*" />
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Row="0" Grid.ColumnSpan="2">
             <MenuItem Header="Файл">
-                
             </MenuItem>
         </Menu>
         <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="Auto">
@@ -30,14 +29,13 @@
                 <Label>
                     Фильтры
                 </Label>
-                <Separator/>
+                <Separator />
                 <TextBox MinWidth="120" Name="FilterByNameTextBox">
                     Имя документа
                 </TextBox>
             </ToolBar>
         </ToolBarTray>
 
-        <Frame x:Name="Main" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"/>
-
+        <Frame x:Name="Main" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

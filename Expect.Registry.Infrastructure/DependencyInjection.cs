@@ -2,7 +2,6 @@
 using Expect.Registry.Domain.Models;
 using Expect.Registry.Domain.ViewModels;
 using Expect.Registry.Domain.ViewModels.Interfaces;
-using Expect.Registry.Infrastructure.Commands.Interfaces;
 using Expect.Registry.Infrastructure.Commands.LoadRegestry;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +25,7 @@ namespace Expect.Registry.Infrastructure
 			where TViewModel : IViewModel
 		{
 			services.AddTransient<
-				IRequestHandler<LoadRegistryQuery<TViewModel>, IEnumerable<TViewModel>>, 
+				IRequestHandler<LoadRegistryQuery<TViewModel>, IEnumerable<TViewModel>>,
 				LoadRegistryQueryHandler<TDocumentType, TViewModel>
 				>();
 
