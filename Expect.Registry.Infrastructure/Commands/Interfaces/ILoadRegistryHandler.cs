@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace Expect.Registry.Infrastructure.Commands.Interfaces
 {
-	public interface ILoadRegistryHandler<TLoadRegistry> : IRequestHandler<TLoadRegistry, IEnumerable<IViewModel>>
-		where TLoadRegistry : ILoadRegistry<IViewModel>
+	public interface ILoadRegistryHandler<TLoadRegisrty, TViewModel> : IRequestHandler<TLoadRegisrty, IEnumerable<TViewModel>>
+		where TViewModel : IViewModel
+		where TLoadRegisrty : ILoadRegistry<TViewModel>
 	{
 	}
 }

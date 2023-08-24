@@ -8,6 +8,6 @@ namespace Expect.Registry.View.Pages.Interfaces
 {
 	public interface IBasedOnType
 	{
-		public Type Type { get; set; }
+		public void AddFields(Type docType);
 	}
 }

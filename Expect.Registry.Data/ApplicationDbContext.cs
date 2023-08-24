@@ -16,6 +16,7 @@ namespace Expect.Registry.Data
 		public DbSet<CounterParty> CounterParties { get; set; }
 		public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 		public DbSet<DocumentKind> DocumentKinds { get; set; }
+		public DbSet<CameFrom> CameFroms { get; set; }
 
 		#endregion Entities
 
@@ -40,7 +41,6 @@ namespace Expect.Registry.Data
 		}
 
 		#endregion Constructors
-
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

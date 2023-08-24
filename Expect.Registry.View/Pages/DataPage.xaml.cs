@@ -1,4 +1,7 @@
-﻿using Expect.Registry.Domain.Models;
+﻿using Expect.Registry.Domain.Interfaces;
+using Expect.Registry.Domain.Models;
+using Expect.Registry.Domain.ViewModels;
+using Expect.Registry.Domain.ViewModels.Interfaces;
 using Expect.Registry.Infrastructure.Commands.LoadRegestry;
 using Expect.Registry.Infrastructure.Enums;
 using Expect.Registry.View.Factories.DocumentCreationFactory;
@@ -34,10 +37,11 @@ namespace Expect.Registry.View.Pages
 			_mediator = mediator;
 			_creationFactory = creationFactory;
 		}
-		private async Task SetRegistry(Type type)
+		private async Task SetRegistry<TViewModel>() 
+			where TViewModel : IViewModel
 		{
-			_regisrtyType = type;
-			var query = new LoadRegistryQuery(type);
+			_regisrtyType = typeof(TViewModel);
+			var query = new LoadRegistryQuery<TViewModel>();
 
 			var docs = await _mediator.Send(query);
 			
@@ -46,12 +50,12 @@ namespace Expect.Registry.View.Pages
 
 		private async void BasicDocumentButton_Click(object sender, RoutedEventArgs e)
 		{
-			await SetRegistry(typeof(BasicDocument));
+			await SetRegistry<BasicDocumentViewModel>();
 		}
 
 		private async void IncomingDocumentButton_Click(object sender, RoutedEventArgs e)
 		{
-			await SetRegistry(typeof(IncomingDocument));
+			await SetRegistry<IncomingDocumentViewModel>();
 		}
 
 		private void CreateDocument_Click(object sender, RoutedEventArgs e)

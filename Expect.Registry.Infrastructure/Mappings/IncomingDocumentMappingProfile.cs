@@ -18,6 +18,13 @@ namespace Expect.Registry.Infrastructure.Mappings
 					opt => opt.MapFrom(doc => string.Join('\n', doc.CameFrom.Select(ad => ad.CameFrom.Name))))
 				.ForMember(vm => vm.CounterParty,
 					opt => opt.MapFrom(doc => string.Join('\n', doc.CounterParty.Select(ad => ad.CounterParty.Name))));
+
+			CreateMap<IncomingDocumentViewModel, IncomingDocument>()
+				.IncludeBase<BasicDocumentViewModel, BasicDocument>()
+				.ForMember(doc => doc.Addressee, opt => opt.Ignore())
+				.ForMember(doc => doc.CameFrom, opt => opt.Ignore())
+				.ForMember(doc => doc.CounterParty, opt => opt.Ignore())
+				.ForMember(doc => doc.DeliveryMethod, opt => opt.Ignore());
 		}
 	}
 }

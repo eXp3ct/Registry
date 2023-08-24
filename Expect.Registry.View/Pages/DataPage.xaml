@@ -34,7 +34,7 @@
         <DataGrid Grid.Row="2" Grid.Column="2" x:Name="DataGrid" SelectionMode="Single"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False" CanUserDeleteRows="False"
                   CanUserReorderColumns="False" CanUserSortColumns="False" GridLinesVisibility="All" HorizontalContentAlignment="Left" HeadersVisibility="Column"
-                  VerticalContentAlignment="Center">
+                  VerticalContentAlignment="Center" IsReadOnly="True">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <Setter Property="FontSize" Value="16"/>

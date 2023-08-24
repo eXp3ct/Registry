@@ -21,7 +21,7 @@ namespace Expect.Registry.View.Factories.DocumentCreationFactory
 		{
 			var page = _factory();
 
-			page.Type = documentType;
+			page.AddFields(documentType);
 
 			return page;
 		}
