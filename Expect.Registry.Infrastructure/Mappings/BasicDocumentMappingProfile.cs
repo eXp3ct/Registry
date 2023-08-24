@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Expect.Registry.Domain.JoinEntities;
 using Expect.Registry.Domain.Models;
 using Expect.Registry.Domain.ViewModels;
 
@@ -11,8 +12,10 @@ namespace Expect.Registry.Infrastructure.Mappings
 			CreateMap<BasicDocument, BasicDocumentViewModel>()
 				.ForMember(vm => vm.DocumentKind,
 					opt => opt.MapFrom(doc =>
-						string.Join(',', doc.JoinDocumentKind
+						string.Join('\n', doc.JoinDocumentKind
 							.Select(join => join.DocumentKind.Name))));
+
+			CreateMap<BasicDocumentViewModel, BasicDocument>();
 		}
 	}
 }

@@ -6,6 +6,5 @@ namespace Expect.Registry.Infrastructure.Commands.Interfaces
 {
 	public interface ILoadRegistry<TViewModel> : IRequest<IEnumerable<TViewModel>> where TViewModel : IViewModel
 	{
-		public RegistryType RegistryType { get; }
 	}
 }

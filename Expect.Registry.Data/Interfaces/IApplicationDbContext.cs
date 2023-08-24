@@ -13,6 +13,7 @@ namespace Expect.Registry.Data.Interfaces
 		public DbSet<CounterParty> CounterParties { get; set; }
 		public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 		public DbSet<DocumentKind> DocumentKinds { get; set; }
+		public DbSet<CameFrom> CameFroms { get; set; }
 		//public DbSet<IncomingDocument> IncomingDocuments { get; set; }
 
 		#endregion Entities

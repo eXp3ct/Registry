@@ -1,4 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Expect.Registry.Domain.Interfaces;
+using Expect.Registry.Domain.Models;
+using Expect.Registry.Domain.ViewModels;
+using Expect.Registry.Domain.ViewModels.Interfaces;
+using Expect.Registry.Infrastructure.Commands.Interfaces;
+using Expect.Registry.Infrastructure.Commands.LoadRegestry;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Expect.Registry.Infrastructure
@@ -9,6 +16,19 @@ namespace Expect.Registry.Infrastructure
 		{
 			services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+			services.AddGenericHandlers<BasicDocument, BasicDocumentViewModel>();
+			services.AddGenericHandlers<IncomingDocument, IncomingDocumentViewModel>();
+			return services;
+		}
+
+		private static IServiceCollection AddGenericHandlers<TDocumentType, TViewModel>(this IServiceCollection services)
+			where TDocumentType : IHaveId
+			where TViewModel : IViewModel
+		{
+			services.AddTransient<
+				IRequestHandler<LoadRegistryQuery<TViewModel>, IEnumerable<TViewModel>>, 
+				LoadRegistryQueryHandler<TDocumentType, TViewModel>
+				>();
 
 			return services;
 		}

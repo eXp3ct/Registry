@@ -11,13 +11,20 @@ namespace Expect.Registry.Infrastructure.Mappings
 			CreateMap<IncomingDocument, IncomingDocumentViewModel>()
 				.IncludeBase<BasicDocument, BasicDocumentViewModel>()
 				.ForMember(vm => vm.Addresse,
-					opt => opt.MapFrom(doc => string.Join(',', doc.Addressee.Select(ad => ad.Addressee.FullName))))
+					opt => opt.MapFrom(doc => string.Join('\n', doc.Addressee.Select(ad => ad.Addressee.FullName))))
 				.ForMember(vm => vm.DeliveryMethod,
-					opt => opt.MapFrom(doc => string.Join(',', doc.DeliveryMethod.Select(ad => ad.DeliveryMethod.Name))))
+					opt => opt.MapFrom(doc => string.Join('\n', doc.DeliveryMethod.Select(ad => ad.DeliveryMethod.Name))))
 				.ForMember(vm => vm.CameFrom,
-					opt => opt.MapFrom(doc => string.Join(',', doc.CameFrom.Select(ad => ad.CameFrom.Name))))
+					opt => opt.MapFrom(doc => string.Join('\n', doc.CameFrom.Select(ad => ad.CameFrom.Name))))
 				.ForMember(vm => vm.CounterParty,
-					opt => opt.MapFrom(doc => string.Join(',', doc.CounterParty.Select(ad => ad.CounterParty.Name))));
+					opt => opt.MapFrom(doc => string.Join('\n', doc.CounterParty.Select(ad => ad.CounterParty.Name))));
+
+			CreateMap<IncomingDocumentViewModel, IncomingDocument>()
+				.IncludeBase<BasicDocumentViewModel, BasicDocument>()
+				.ForMember(doc => doc.Addressee, opt => opt.Ignore())
+				.ForMember(doc => doc.CameFrom, opt => opt.Ignore())
+				.ForMember(doc => doc.CounterParty, opt => opt.Ignore())
+				.ForMember(doc => doc.DeliveryMethod, opt => opt.Ignore());
 		}
 	}
 }
