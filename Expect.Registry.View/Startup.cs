@@ -1,6 +1,7 @@
 ﻿using Expect.Registry.Data;
 using Expect.Registry.Infrastructure;
-using Expect.Registry.View.Windows.CreateDocument;
+using Expect.Registry.View.Factories.DocumentCreationFactory;
+using Expect.Registry.View.Pages;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,8 @@ namespace Expect.Registry.View
 		{
 			services.AddInfrastructure();
 			services.AddPersistance(configuration);
+			services.AddScoped<DataPage>();
+			services.AddCreationFactory<DocumentCreationPage>();
 		}
 	}
 }

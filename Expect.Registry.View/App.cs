@@ -21,5 +21,11 @@ namespace Expect.Registry.View
 			_mainWindow.Show();
 			base.OnStartup(e);
 		}
+
+		protected override void OnExit(ExitEventArgs e)
+		{
+			_mainWindow.Close();
+			base.OnExit(e);
+		}
 	}
 }

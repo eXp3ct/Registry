@@ -11,7 +11,7 @@ namespace Expect.Registry.Infrastructure.Mappings
 			CreateMap<BasicDocument, BasicDocumentViewModel>()
 				.ForMember(vm => vm.DocumentKind,
 					opt => opt.MapFrom(doc =>
-						string.Join(',', doc.JoinDocumentKind
+						string.Join('\n', doc.JoinDocumentKind
 							.Select(join => join.DocumentKind.Name))));
 		}
 	}

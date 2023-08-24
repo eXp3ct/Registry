@@ -14,9 +14,9 @@ namespace Expect.Registry.Infrastructure.Commands.LoadRegestry
 {
 	public class LoadRegistryQuery : ILoadRegistry<IViewModel>
 	{
-		public RegistryType RegistryType { get; }
+		public Type RegistryType { get; }
 
-		public LoadRegistryQuery(RegistryType registryType)
+		public LoadRegistryQuery(Type registryType)
 		{
 			RegistryType = registryType;
 		}
@@ -39,12 +39,12 @@ namespace Expect.Registry.Infrastructure.Commands.LoadRegestry
 		{
 			return request.RegistryType switch
 			{
-				RegistryType.Basic => await _context.BasicDocuments
+				Type t when t == typeof(BasicDocument) => await _context.BasicDocuments
 										.Where(doc => doc.Discriminator == Guid.Parse(_configuration["Discriminators:Basic"]!))
 										.OfType<BasicDocument>()
 										.ProjectTo<BasicDocumentViewModel>(_mapper.ConfigurationProvider)
 										.ToListAsync(cancellationToken),
-				RegistryType.Incoming => await _context.BasicDocuments
+				Type t when t == typeof(IncomingDocument) => await _context.BasicDocuments
 										.Where(doc => doc.Discriminator == Guid.Parse(_configuration["Discriminators:Incoming"]!))
 										.OfType<IncomingDocument>()
 										.ProjectTo<IncomingDocumentViewModel>(_mapper.ConfigurationProvider)
